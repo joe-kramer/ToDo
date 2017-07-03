@@ -1,8 +1,12 @@
 <!--index.vtl-->
 <h1>Task list!</h1>
-#if ($task)
-  <p>Current task:</p>
-  <p>$task.getDescription()</p>
+
+#if ($tasks)
+  <ul>
+    #foreach ($task in $tasks)
+      <li>$task.getDescription()</li>
+    #end
+  </ul>
 #else
   <p>No tasks!</p>
 #end
