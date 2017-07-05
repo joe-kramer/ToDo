@@ -30,4 +30,8 @@ public class Task {
   public static List<Task> all() {
     return instances;
   }
+
+  public static void clear() {
+    instances.clear();
+  }
 }
