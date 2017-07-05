@@ -1,5 +1,6 @@
 import org.junit.*;
 import static org.junit.Assert.*;
+import java.time.LocalDateTime;
 
 public class TaskTest {
 
@@ -19,5 +20,11 @@ public class TaskTest {
   public void isCompleted_isFalseAfterInstantiation_false() {
     Task myTask = new Task("Mow the lawn");
     assertEquals(false, myTask.isCompleted());
+  }
+
+  @Test
+  public void getCreatedAt_instantiatesWithCurrentTime_today() {
+    Task myTask = new Task("Mow the lawn");
+    assertEquals(LocalDateTime.now().getDayOfWeek(), myTask.getCreatedAt().getDayOfWeek());
   }
 }
