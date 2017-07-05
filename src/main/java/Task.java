@@ -40,4 +40,8 @@ public class Task {
   public int getId() {
     return mId;
   }
+
+  public static Task find(int id) {
+    return instances.get(id - 1);
+  }
 }
