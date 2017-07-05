@@ -27,4 +27,12 @@ public class TaskTest {
     Task myTask = new Task("Mow the lawn");
     assertEquals(LocalDateTime.now().getDayOfWeek(), myTask.getCreatedAt().getDayOfWeek());
   }
+
+  @Test
+  public void all_returnsAllInstancesOfTask_true() {
+    Task firstTask = new Task("Mow the lawn");
+    Task secondTask = new Task("Buy groceries");
+    assertEquals(true, Task.all().contains(firstTask));
+    assertEquals(true, Task.all().contains(secondTask));
+  }
 }
