@@ -4,6 +4,11 @@ import java.time.LocalDateTime;
 
 public class TaskTest {
 
+  @Before
+  public void tearDown() {
+    Task.clear();
+  }
+
   @Test
   public void Task_instantiatesCorrectly_true() {
     Task myTask = new Task("Mow the lawn");
@@ -45,7 +50,7 @@ public class TaskTest {
 
   @Test
   public void getId_tasksInstantiateWithAnID_1() {
-    Task.clear();  // Remember, the test will fail without this line! We need to empty leftover Tasks from previous tests!
+    // Task.clear();  // Remember, the test will fail without this line! We need to empty leftover Tasks from previous tests!
     Task myTask = new Task("Mow the lawn");
     assertEquals(1, myTask.getId());
   }
