@@ -60,16 +60,18 @@ public class TaskTest {
   }
 
   @Test
-  public void getId_tasksInstantiateWithAnID_1() {
-    // Task.clear();  // Remember, the test will fail without this line! We need to empty leftover Tasks from previous tests!
+  public void getId_tasksInstantiateWithAnID() {
     Task myTask = new Task("Mow the lawn");
-    assertEquals(1, myTask.getId());
+    myTask.save();
+    assertTrue(myTask.getId() > 0);
   }
 
   @Test
   public void find_returnsTaskWithSameId_secondTask() {
     Task firstTask = new Task("Mow the lawn");
+    firstTask.save();
     Task secondTask = new Task("Buy groceries");
+    secondTask.save();
     assertEquals(Task.find(secondTask.getId()), secondTask);
   }
 
@@ -85,5 +87,13 @@ public class TaskTest {
     Task myTask = new Task("Mow the lawn");
     myTask.save();
     assertTrue(Task.all().get(0).equals(myTask));
+  }
+
+  @Test
+  public void save_assignsIdToObject() {
+    Task myTask = new Task("Mow the lawn");
+    myTask.save();
+    Task savedTask = Task.all().get(0);
+    assertEquals(myTask.getId(), savedTask.getId());
   }
 }
