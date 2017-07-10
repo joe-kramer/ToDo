@@ -45,9 +45,11 @@ public class TaskTest {
   @Test
   public void all_returnsAllInstancesOfTask_true() {
     Task firstTask = new Task("Mow the lawn");
+    firstTask.save();
     Task secondTask = new Task("Buy groceries");
-    assertEquals(true, Task.all().contains(firstTask));
-    assertEquals(true, Task.all().contains(secondTask));
+    secondTask.save();
+    assertEquals(true, Task.all().get(0).equals(firstTask));
+    assertEquals(true, Task.all().get(1).equals(secondTask));
   }
 
   @Test
@@ -76,5 +78,12 @@ public class TaskTest {
     Task firstTask = new Task("Mow the lawn");
     Task secondTask = new Task("Mow the lawn");
     assertTrue(firstTask.equals(secondTask));
+  }
+
+  @Test
+  public void save_returnsTrueIfDescriptionsAreTheSame() {
+    Task myTask = new Task("Mow the lawn");
+    myTask.save();
+    assertTrue(Task.all().get(0).equals(myTask));
   }
 }
