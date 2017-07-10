@@ -54,13 +54,6 @@ public class TaskTest {
     assertEquals(true, Task.all().get(1).equals(secondTask));
   }
 
-  // @Test
-  // public void clear_emptiesAllTasksFromArrayList_0() {
-  //   Task myTask = new Task("Mow the lawn");
-  //   Task.clear();
-  //   assertEquals(0, Task.all().size());
-  // }
-
   @Test
   public void getId_tasksInstantiateWithAnID() {
     Task myTask = new Task("Mow the lawn", 1);
