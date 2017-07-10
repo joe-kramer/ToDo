@@ -3,7 +3,7 @@
 
 <ul>
   #foreach($task in $category.getTasks())
-   <li>$task.getDescription()</li>
+   <li>$task.getDescription() - COMPLETED? $task.isCompleted()</li>
   #end
 </ul>
 
