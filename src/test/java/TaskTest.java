@@ -17,7 +17,7 @@ public class TaskTest {
       con.createQuery(sql).executeUpdate();
     }
   }
-  
+
   @Test
   public void Task_instantiatesCorrectly_true() {
     Task myTask = new Task("Mow the lawn");
@@ -69,5 +69,12 @@ public class TaskTest {
     Task firstTask = new Task("Mow the lawn");
     Task secondTask = new Task("Buy groceries");
     assertEquals(Task.find(secondTask.getId()), secondTask);
+  }
+
+  @Test
+  public void equals_returnsTrueIfDescriptionsAreTheSame() {
+    Task firstTask = new Task("Mow the lawn");
+    Task secondTask = new Task("Mow the lawn");
+    assertTrue(firstTask.equals(secondTask));
   }
 }
