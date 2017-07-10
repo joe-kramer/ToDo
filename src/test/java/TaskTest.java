@@ -13,8 +13,10 @@ public class TaskTest {
   @After
   public void tearDown() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "DELETE FROM tasks *;";
-      con.createQuery(sql).executeUpdate();
+      String deleteTasksQuery = "DELETE FROM tasks *;";
+      String deleteCategoriesQuery = "DELETE FROM categories *;";
+      con.createQuery(deleteTasksQuery).executeUpdate();
+      con.createQuery(deleteCategoriesQuery).executeUpdate();
     }
   }
 
@@ -52,12 +54,12 @@ public class TaskTest {
     assertEquals(true, Task.all().get(1).equals(secondTask));
   }
 
-  @Test
-  public void clear_emptiesAllTasksFromArrayList_0() {
-    Task myTask = new Task("Mow the lawn");
-    Task.clear();
-    assertEquals(0, Task.all().size());
-  }
+  // @Test
+  // public void clear_emptiesAllTasksFromArrayList_0() {
+  //   Task myTask = new Task("Mow the lawn");
+  //   Task.clear();
+  //   assertEquals(0, Task.all().size());
+  // }
 
   @Test
   public void getId_tasksInstantiateWithAnID() {
