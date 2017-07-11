@@ -12,12 +12,21 @@ public class TaskTest {
 
   @After
   public void tearDown() {
-    try(Connection con = DB.sql2o.open()) {
+    try(Connection con = DB.sql2o.open();) {
       String deleteTasksQuery = "DELETE FROM tasks *;";
       String deleteCategoriesQuery = "DELETE FROM categories *;";
       con.createQuery(deleteTasksQuery).executeUpdate();
       con.createQuery(deleteCategoriesQuery).executeUpdate();
     }
+  }
+
+  @Test
+  public void delete_deletesTask_true() {
+    Task myTask = new Task("Mow the lawn", 1);
+    myTask.save();
+    int myTaskId = myTask.getId();
+    myTask.delete();
+    assertEquals(null, Task.find(myTaskId));
   }
 
   @Test
